@@ -1,4 +1,4 @@
-  // Kata 2 - Conditional sums
+// Kata 2 - Conditional sums
 /*
 For this kata, we'll be adding only the numbers in the array which match the given condition.
 */
