@@ -1,0 +1,29 @@
+/*
+Write a function that takes a string and returns a string with the correct case for character titles in the Game of Thrones series.
+
+    The words and, the, of and in should be lowercase.
+    All other words should have the first character as uppercase and the rest lowercase.
+
+Examples
+
+correctTitle("jOn SnoW, kINg IN thE noRth.")
+➞ "Jon Snow, King in the North."
+*/
+
+function correctTitle(str) {
+    const target = ['in', 'the', 'of', 'in', 'and'];
+
+    str = str.toLowerCase();
+
+    str = str.split(' ')
+        .map((x) => target.includes(x) ? x : x[0].toUpperCase() + x.slice(1))
+        .join(' ');
+
+    return str.split('-')
+        .map((x) => target.includes(x) ? x : x[0].toUpperCase() + x.slice(1))
+        .join('-');
+}
+
+console.log(correctTitle("jOn SnoW, kINg in thE noRth."))
+
+
