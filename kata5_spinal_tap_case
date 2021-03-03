@@ -1,0 +1,33 @@
+/*
+Convert a string to spinal case. Spinal case is all-lowercase-words-joined-by-dashes.
+
+spinalCase("This Is Spinal Tap") => string this-is-spinal-tap.
+
+spinalCase("thisIsSpinalTap") => this-is-spinal-tap.
+
+spinalCase("The_Andy_Griffith_Show") =>  the-andy-griffith-show.
+
+spinalCase("Teletubbies say Eh-oh") =>  teletubbies-say-eh-oh.
+
+spinalCase("AllThe-small Things") =>  all-the-small-things.
+*/
+
+
+// split with Regex and besides UpperCase we find spaces and lowerdashes like this: /\s|_|
+
+function spinalCase(str) {
+    return str.split(/\s|_|(?=[A-Z])/)
+        .join('-')
+        .toLowerCase()
+        .split(' ')
+        .filter((x) => x !== ' ')
+        .join('')
+}
+
+console.log(spinalCase(
+    'This Is Spinal Tap' + '\n' +
+    'thisIsSpinalTap' + '\n' +
+    'The_Andy_Griffith_Show' + '\n' +
+    'Teletubbies say Eh-oh' + '\n' +
+    'AllThe-small Things'
+));
