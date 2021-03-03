@@ -1,0 +1,15 @@
+/*
+translatePigLatin("california") => aliforniacay.
+
+translatePigLatin("paragraphs") =>  aragraphspay.
+
+translatePigLatin("glove") =>  oveglay.
+*/
+
+function translatePigLatin(str) {
+    // with regex find if firstChar matches consonants
+    // otherwise we replace untill the firsth consonant
+    return str[0].match(/^[aeiou]/) ? str + 'way' : str.replace(/(^[^aeiou]+)(\w*)/, "$2$1ay");
+}
+
+console.log(translatePigLatin('paragraphs'))
