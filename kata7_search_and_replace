@@ -1,0 +1,28 @@
+/*
+Perform a search and replace on the sentence using the arguments provided and return the new sentence.
+
+First argument is the sentence to perform the search and replace on.
+
+Second argument is the word that you will be replacing (before).
+
+myReplace("He is Sleeping on the couch", "Sleeping", "sitting") should return the string He is Sitting on the couch.
+*/
+
+
+function myReplace(str, before, after) {
+
+    var index = str.indexOf(before);
+
+    if (str[index] === str[index].toUpperCase()) {
+
+        after = after.charAt(0).toUpperCase() + after.slice(1);
+    } else {
+        after = after.charAt(0).toLowerCase() + after.slice(1);
+    }
+    str = str.replace(before, after);
+
+    return str;
+}
+
+console.log(myReplace("This has a spellngi error", "spellngi", "spelling"))
+myReplace("He is Sleeping on the couch", "Sleeping", "sitting")
