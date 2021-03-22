@@ -1,0 +1,27 @@
+/*
+
+Find the missing letter in the passed letter range and return it.
+If all letters are present in the range, return undefined
+
+fearNotLetter("abce") should => d.
+
+fearNotLetter("abcdefghjklmno") => i.
+
+*/
+
+function fearNotLetter(str) {
+
+    // String.fromCharCode method retrun strgin created from specified sequence of UTF-16 units
+    // String.CharCode method retrun strgin created from specified index of UTF-16 units
+    
+    for (let i = 0; i < str.length; i++) {
+        // here we define just a chunk of alphabetic sequence from given stgring
+        let code = str.charCodeAt(i)
+        if (code !== str.charCodeAt(0) + i) {
+            return String.fromCharCode(code - 1)
+        }
+    }
+    return undefined
+}
+
+console.log(fearNotLetter("abcdefghjklmno"));
