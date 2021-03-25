@@ -1,0 +1,31 @@
+/* 
+Sum All Odd Fibonacci Numbers
+
+sumFibs(1) => a number.
+
+sumFibs(1000) => 1785.
+
+sumFibs(4000000) => 4613732.
+
+sumFibs(4) => 5.
+
+sumFibs(75024) => 60696.
+
+sumFibs(75025) => 135721.
+ */
+
+function sumFibs(num) {
+    let prevnum = 0;
+    let currnum = 1;
+    let result = 0;
+    while (currnum <= num) {
+        if (currnum % 2 !== 0) {
+            result += currnum;
+        }
+        currnum += prevnum;
+        prevnum = currnum - prevnum
+    }
+    return result
+}
+
+console.log(sumFibs(1000));
