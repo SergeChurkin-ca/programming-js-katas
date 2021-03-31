@@ -1,0 +1,18 @@
+/*
+Rewrite sumPrimes so it returns the sum of all prime numbers that are less than or equal to num.
+
+sumPrimes(10) => 17.
+
+sumPrimes(977) => 73156.
+*/
+
+function sumOfPrimeNumbers(num) {
+    let primes = [];
+    for (let i = 2; i <= num; i++) {
+        if (primes.every((primes) => i % primes !== 0))
+            primes.push(i)
+    }
+    return primes.reduce((a, b) => a + b)
+}
+
+console.log(sumOfPrimeNumbers(977))
