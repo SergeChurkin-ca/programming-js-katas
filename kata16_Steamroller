@@ -1,0 +1,56 @@
+/*
+Flatten a nested array. You must account for varying levels of nesting.
+Your solution should not! use the Array.prototype.flat() or Array.prototype.flatMap() methods.
+*/
+
+/*
+steamrollArray([[["a"]], [["b"]]]) => ["a", "b"].
+Passed
+
+steamrollArray([1, [2], [3, [[4]]]]) => [1, 2, 3, 4].
+Passed
+
+steamrollArray([1, [], [3, [[4]]]]) => [1, 3, 4].
+Passed
+
+steamrollArray([1, {}, [3, [[4]]]]) => [1, {}, 3, 4].
+*/
+
+
+function steamrollArray(arr) {
+
+    return arr.reduce((a, b) => a + b).
+        // it's tricky, so instead of tinkering and replacing the object, which for some reasons works just as a character
+        // and breaks down in next functions, I made up a temp placeholder '$'to manipulate with at the end
+    replace('[object Object]', '$')
+        .split('')
+        .filter((x) => x !== ',')
+        .map((x) => x == '$' ? x = {} : x)
+        .map((x) => Number.isNaN(parseInt(x)) ? x : parseInt(x))
+}
+
+console.log(steamrollArray([
+    [
+        ["a"]
+    ],
+    [
+        ["b"]
+    ]
+]))
+console.log(steamrollArray([1, [2],
+    [3, [
+        [4]
+    ]]
+]))
+
+console.log(steamrollArray([1, [],
+    [3, [
+        [4]
+    ]]
+]))
+
+console.log(steamrollArray([1, {},
+    [3, [
+        [4]
+    ]]
+]))
