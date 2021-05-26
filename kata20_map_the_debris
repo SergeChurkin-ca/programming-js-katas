@@ -1,0 +1,23 @@
+// Return a new array that transforms the elements' average altitude into their orbital periods (in seconds).
+// The values should be rounded to the nearest whole number. The body being orbited is Earth.
+// The radius of the earth is 6367.4447 kilometers, and the GM value of earth is 398600.4418 km3s-2.
+
+// formula is T = 2*pi*sqrt(r^3/GM) where r = earthRadius+avgAlt, which is the distance from midpoint of the earth to the object, and T = Orbital Period
+
+function orbitalPeriod(arr) {
+    var GM = 398600.4418;
+    var earthRadius = 6367.4447;
+    let newArr = []
+    let getOrbPeriod = (obj) => {
+        let orbPeriod = Math.round(2 * Math.PI * Math.sqrt(Math.pow(earthRadius + obj.avgAlt, 3) / GM))
+        return { name: obj.name, orbitalPeriod: orbPeriod }
+    };
+    for (let elem in arr) {
+        newArr.push(getOrbPeriod(arr[elem]))
+    }
+    return newArr;
+}
+orbitalPeriod([{ name: "sputnik", avgAlt: 35873.5553 }]);
+
+// console.log(orbitalPeriod([{ name: "sputnik", avgAlt: 35873.5553 }]))
+
