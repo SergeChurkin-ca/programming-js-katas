@@ -1,0 +1,25 @@
+function telephoneCheck(str) {
+
+    const numRex = /^(1\s?)?(\d{3}|\(\d{3}\))[\-\s]?\d{3}[\-\s]?\d{4}$/gm;
+    return numRex.test(str);
+
+    // explanation
+    /*
+
+    1. we start from placing "1" at the begninng, it also could be a space after "1" \s 
+        also this chunk is optional with "?"
+    2. miltiline ^ and $ match at the beginning and the end
+    3. break down in 2 grops of 3 and 1 group of 4, patterns are (\d{3}) and (\d{4})
+    4. place space or dash or nothing between these groups, is stands for OR [\-\s] also optional with "?"
+    5. .test executes a match
+    https://regex101.com/ helps debugging
+
+    */
+
+
+}
+
+console.log('ten digits?', telephoneCheck("5555555555"))
+console.log('ten digits?', telephoneCheck("15555555555"))
+console.log(telephoneCheck("555-555-5555"))
+console.log("has to be false", telephoneCheck("123**&!!asdf#"))
