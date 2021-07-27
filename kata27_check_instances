@@ -1,0 +1,9 @@
+function checkCharFrequency(message) {
+    message.split('')
+    return [...message].reduce((a, b) => {
+        a[b] = a[b] ? a[b] + 1 : 1
+        return a
+    }, {})
+}
+
+console.log(checkCharFrequency('I like cats'))
