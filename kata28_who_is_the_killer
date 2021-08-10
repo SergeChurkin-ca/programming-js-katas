@@ -1,0 +1,32 @@
+// classic detective
+// we have suspect and victims
+// have to find out the supspect based on who was most of the victims
+
+const suspectInfo = {
+    'James': ['Jacob', 'Bill'],
+    'Johnny': ['David', 'Kyle', 'Lucas', 'Bill'],
+    'Peter': ['Lucy', 'Kyle', 'John']
+}
+
+const dead = ['Lucas', 'Bill', 'John']
+
+function killer(suspectInfo, dead) {
+    let killerObj = {}
+    for (let i in suspectInfo) {
+        let temp = []
+        for (let a = 0; a < dead.length; a++) {
+            temp.push(Object.values(suspectInfo[i].filter((x) => x === dead[a])).length)
+        }
+        // here we will just count instances of victims
+        killerObj[i] = parseInt(temp.reduce(((a, b) => a + b)))
+    }
+
+    const resultVals = Object.values(killerObj)
+    const suspectObj = Object.fromEntries(Object.entries(killerObj).filter((x) => x.includes(Math.max(...resultVals))))
+
+    return `The killer is ${Object.keys(suspectObj)} \nbecause he is the only onw who saw all victims!`
+
+}
+
+
+console.log(killer(suspectInfo, dead))
