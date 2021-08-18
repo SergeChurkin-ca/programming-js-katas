@@ -1,0 +1,33 @@
+/*
+there's a simple game logic: player jumps from cloud '0' to coud '0' to reach the end of pattern
+he can jump 1 or 2 spaces and has to avoid '1' which is thenderhead
+there are can't be thenderheads next to each other
+we determine how many jumps minum it takes to reach the end of lcoud pattern
+
+logics:
+if we add 2 spaces to indexOf(i) - do we catch value of 1?
+if yes - then we add 1 toindexOf(i)
+if no - then we add 2 toindexOf(i) until reaching the full length of array
+
+*/
+
+function jumpingOnClouds(c) {
+    // Write your code here
+    let resultArray = []
+    for (let i = 0; i < c.length - 1;) {
+
+        if (c[i + 2] < c.length && c[i + 2] === 0) {
+            resultArray.push(c[i + 2])
+            i += 2
+        } else {
+            resultArray.push(c[i + 1])
+            i += 1
+        }
+
+    }
+    return resultArray.length
+}
+
+console.log('should be 4', jumpingOnClouds([0, 0, 1, 0, 0, 1, 0]))
+console.log('should be 3', jumpingOnClouds([0, 0, 0, 0, 1, 0]))
+console.log('should be 6', jumpingOnClouds([0, 0, 1, 0, 0, 0, 0, 1, 0, 0]))
