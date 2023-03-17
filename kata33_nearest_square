@@ -1,0 +1,12 @@
+// finding nearest square number
+
+function nearestSq(n) {
+    const lowestSquareOfn = Math.floor(Math.sqrt(n))
+    const highestSquareOfn = Math.ceil(Math.sqrt(n))
+    const lowerSq = lowestSquareOfn ** 2
+    const higherSq = highestSquareOfn ** 2
+    return Math.abs(n - lowerSq) < Math.abs(n - higherSq) ? lowerSq : higherSq
+}
+
+console.log(nearestSq(111)) // nearest square is 121
+console.log(nearestSq(10)) // nearest square is 9
